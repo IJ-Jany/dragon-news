@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaEye, FaStar, FaShareAlt, FaRegBookmark } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const NewsCard = ({ news }) => {
-  const { title, author, published_date, thumbnail_url, details, ratings, total_view } = news;
+  const {id, title, author, published_date, thumbnail_url, details, ratings, total_view } = news;
 
   const formetDate = new Date(news.author.published_date).toLocaleDateString()
 
@@ -41,7 +42,7 @@ const NewsCard = ({ news }) => {
         {details?.length > 200 ? (
           <>
             {details.slice(0, 200)}....
-            <span className='text-primary font-semibold hover:underline cursor-pointer'>Read More</span>
+            <Link to={`/news-details/${id}`} className='text-primary font-semibold hover:underline cursor-pointer'>Read More</Link >
           </>
         ) : details}
       </div>
